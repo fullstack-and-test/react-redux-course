@@ -1,3 +1,5 @@
+import styles from "./Button.module.css";
+
 export default function Button({
   variant = "primary",
   size = "medium",
@@ -6,9 +8,15 @@ export default function Button({
   onClick,
   children,
 }) {
+  const className = `
+    ${styles[variant]}
+    ${styles[size]}
+    ${fullWidth ? styles.fullWidth : ""}
+	`.trim();
+
   return (
     <button
-      className={`${variant} ${size} ${fullWidth ? "fullWidth" : ""}`}
+      className={className}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
     >
