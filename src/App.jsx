@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 
 import "./App.css";
 
@@ -10,6 +10,11 @@ import UserStatus from "./components/UserStatus.jsx";
 import Button from "./components/Button.jsx";
 import Counter from "./components/Counter.jsx";
 import FilmItem from "./components/FilmItem";
+import AlertButton from "./components/AlertButton";
+import GreetingButton from "./components/GreetingButton";
+import DeleteButton from "./components/DeleteButton";
+import LoginForm from "./components/LoginForm";
+import ButtonList from "./components/ButtonList";
 
 function App() {
   const topFilms = [
@@ -18,6 +23,13 @@ function App() {
     { id: 103, title: "Темний лицар", year: 2008 },
     { id: 104, title: "12 розгніваних чоловіків", year: 1957 },
     { id: 105, title: "Список Шиндлера", year: 1993, rating: 3 },
+  ];
+
+  const actions = [
+    { id: 1, name: "Зберегти", action: "save" },
+    { id: 2, name: "Видалити", action: "delete" },
+    { id: 3, name: "Редагувати", action: "edit" },
+    { id: 4, name: "Поділитися", action: "share" },
   ];
 
   return (
@@ -127,6 +139,14 @@ function App() {
         </ul>
       </div>
 
+      <>
+        <AlertButton />
+        <GreetingButton />
+        <DeleteButton itemId={1234567} />
+        <LoginForm />
+        <ButtonList items={actions} />
+      </>
+      
       <footer>© 2024 Hillel IT School</footer>
     </main>
   );
