@@ -1,0 +1,123 @@
+.card {
+  border: 2px solid #28a745;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #fff;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+}
+
+.cardTitle {
+  padding-top: 40px;
+  margin-bottom: 10px;
+}
+
+.cardUnavailable {
+  border: 2px splid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #f0f0f0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+}
+
+.featuredBadge {
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  background-color: #ff6b6b;
+  color: white;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.discountdBadge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ffc107;
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.priceContainer {
+  margin: 15px 0;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.oldPrice {
+  font-size: 18px;
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 10px;
+}
+
+.newPrice {
+  font-size: 24px;
+  font-weight: bold;
+  color: #dc3545;
+}
+
+.rating {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.shipping {
+  color: #28a745;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.stockStatus {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.buyButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  font-weight: bold;
+  margin: 10px auto 0 auto;
+}
+
+.notifyButton {
+  background-color: #6c7575;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  font-weight: bold;
+  margin: 10px auto 0 auto;
+}
+
+.unavailableText {
+  font-size: 18px;
+  font-weight: bold;
+  color: #dc3545;
+  margin: 15px 0;
+}
