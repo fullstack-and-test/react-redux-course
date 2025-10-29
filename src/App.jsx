@@ -1,4 +1,7 @@
+import React, { Fragment } from "react";
+
 import "./App.css";
+
 import ProductCard from "./components/ProductCard.jsx";
 import ProductPrice from "./components/ProductPrice.jsx";
 import UserProfile from "./components/UserProfile.jsx";
@@ -6,8 +9,17 @@ import UserCard from "./components/UserCard.jsx";
 import UserStatus from "./components/UserStatus.jsx";
 import Button from "./components/Button.jsx";
 import Counter from "./components/Counter.jsx";
+import FilmItem from "./components/FilmItem";
 
 function App() {
+  const topFilms = [
+    { id: 101, title: "Втеча з Шоушенка", year: 1994, rating: 4.8 },
+    { id: 102, title: "Хрещений батько", year: 1972, rating: 4.9 },
+    { id: 103, title: "Темний лицар", year: 2008 },
+    { id: 104, title: "12 розгніваних чоловіків", year: 1957 },
+    { id: 105, title: "Список Шиндлера", year: 1993, rating: 3 },
+  ];
+
   return (
     <main>
       <UserProfile />
@@ -102,6 +114,19 @@ function App() {
       <ProductCard />
       <ProductCard />
       <ProductCard />
+
+      <div>
+        <h1>Топ-5 Фільмів Всіх Часів</h1>
+        <ul>
+          {topFilms.map(({ id, title, year, rating }, index) => (
+            <Fragment key={id}>
+              <strong>#{index + 1}</strong>
+              <FilmItem title={title} year={year} rating={rating} />
+            </Fragment>
+          ))}
+        </ul>
+      </div>
+
       <footer>© 2024 Hillel IT School</footer>
     </main>
   );
