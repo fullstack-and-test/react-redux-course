@@ -15,6 +15,7 @@ import GreetingButton from "./components/GreetingButton";
 import DeleteButton from "./components/DeleteButton";
 import LoginForm from "./components/LoginForm";
 import ButtonList from "./components/ButtonList";
+import NavigationMenu from "./components/NavigationMenu";
 
 function App() {
   const topFilms = [
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <main>
+      <NavigationMenu />
       <UserProfile />
       <Counter />
       <UserCard name="Іван" age={25} email="ivan@mail.com" />
@@ -146,7 +148,7 @@ function App() {
         <LoginForm />
         <ButtonList items={actions} />
       </>
-      
+
       <footer>© 2024 Hillel IT School</footer>
     </main>
   );
