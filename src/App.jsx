@@ -16,6 +16,7 @@ import DeleteButton from "./components/DeleteButton";
 import LoginForm from "./components/LoginForm";
 import ButtonList from "./components/ButtonList";
 import NavigationMenu from "./components/NavigationMenu";
+import RestaurantMenu from "./components/RestaurantMenu";
 
 function App() {
   const topFilms = [
@@ -33,10 +34,71 @@ function App() {
     { id: 4, name: "Поділитися", action: "share" },
   ];
 
+  const user = {
+    name: "Олена Шевченко",
+    avatar: "https://i.pravatar.cc/150?img=66",
+    email: "olena@example.com",
+    phone: "+380 67 123 4567",
+    bio: "Full-stack розробник. Люблю React та TypeScript.",
+    skills: ["React", "TypeScript", "Node.js", "PostgreSQL"],
+    socialLinks: [
+      { platform: "GitHub", url: "https://github.com/...", icon: "🐙" },
+      { platform: "LinkedIn", url: "https://linkedin.com/...", icon: "💼" },
+      { platform: "Twitter", url: "https://twitter.com/...", icon: "🐦" },
+    ],
+  };
+
+  const menuData = [
+    {
+      categoryId: 1,
+      categoryName: "Перші страви",
+      items: [
+        {
+          id: 101,
+          name: "Борщ український",
+          price: 85,
+          description: "З м'ясом та сметаною",
+        },
+        { id: 102, name: "Солянка", price: 95, description: "М'ясна збірна" },
+      ],
+    },
+    {
+      categoryId: 2,
+      categoryName: "Основні страви",
+      items: [
+        {
+          id: 201,
+          name: "Курка по-київськи",
+          price: 180,
+          description: "З гарніром",
+        },
+        {
+          id: 202,
+          name: "Стейк з яловичини",
+          price: 250,
+          description: "Середньої прожарки",
+        },
+      ],
+    },
+    {
+      categoryId: 3,
+      categoryName: "Десерти",
+      items: [
+        {
+          id: 301,
+          name: "Тірамісу",
+          price: 75,
+          description: "Класичний італійський",
+        },
+        { id: 302, name: "Чізкейк", price: 70, description: "Нью-йоркський" },
+      ],
+    },
+  ];
+
   return (
     <main>
       <NavigationMenu />
-      <UserProfile />
+      <UserProfile user={user} />
       <Counter />
       <UserCard name="Іван" age={25} email="ivan@mail.com" />
       <ProductPrice price={1000} discount={10} />
@@ -148,6 +210,8 @@ function App() {
         <LoginForm />
         <ButtonList items={actions} />
       </>
+
+      <RestaurantMenu data={menuData} />
 
       <footer>© 2024 Hillel IT School</footer>
     </main>
