@@ -17,8 +17,9 @@ import LoginForm from "./components/LoginForm";
 import ButtonList from "./components/ButtonList";
 import NavigationMenu from "./components/NavigationMenu";
 import RestaurantMenu from "./components/RestaurantMenu";
+import HighScores from "./components/HighScores.jsx";
 
-function App() {
+function App() {  
   const topFilms = [
     { id: 101, title: "Втеча з Шоушенка", year: 1994, rating: 4.8 },
     { id: 102, title: "Хрещений батько", year: 1972, rating: 4.9 },
@@ -98,6 +99,7 @@ function App() {
   return (
     <main>
       <NavigationMenu />
+      <HighScores />
       <UserProfile user={user} />
       <Counter />
       <UserCard name="Іван" age={25} email="ivan@mail.com" />
