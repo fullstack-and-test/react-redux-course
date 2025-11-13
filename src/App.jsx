@@ -24,6 +24,7 @@ import { topFilms, actions, user, menuData } from "./constants.js";
 
 import { ThemeContext } from "./ThemeContext.js";
 import ThemeButton from "./components/ThemeButton";
+import TodoList from "./components/TodoList";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -36,6 +37,7 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <main className={theme}>
         <ThemeButton />
+        <TodoList />
         <LifecycleDemo />
 
         <NavigationMenu />
