@@ -5,10 +5,6 @@ export default function CounterHistory() {
 
   const prevCounterRef = useRef(null);
 
-  //useEffect(() => {
-  //  inputRef.current?.focus();
-  //}, []);
-
   useEffect(() => {
     prevCounterRef.current = counter;
   }, [counter]);

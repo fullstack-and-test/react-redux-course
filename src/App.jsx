@@ -23,6 +23,7 @@ import ThemeButton from "./components/ThemeButton";
 import TodoList from "./components/TodoList";
 import FocusControl from "./components/FocusControl";
 import CounterHistory from "./components/CounterHistory";
+import ToggleExample from "./components/ToggleExample";
 
 import { topFilms, actions, user, menuData } from "./constants.js";
 
@@ -39,6 +40,7 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <main className={theme}>
         <ThemeButton />
+        <ToggleExample />
         <FocusControl />
         <CounterHistory />
         <TodoList />
