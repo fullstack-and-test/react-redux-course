@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 
@@ -24,6 +25,10 @@ import TodoList from "./components/TodoList";
 import FocusControl from "./components/FocusControl";
 import CounterHistory from "./components/CounterHistory";
 import ToggleExample from "./components/ToggleExample";
+import HomePage from "./components/HomePage";
+import ProductsPage from "./components/ProductsPage";
+import AboutPage from "./components/AboutPage";
+import Navigation from "./components/Navigation";
 
 import { topFilms, actions, user, menuData } from "./constants.js";
 
@@ -38,132 +43,143 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <main className={theme}>
-        <ThemeButton />
-        <ToggleExample />
-        <FocusControl />
-        <CounterHistory />
-        <TodoList />
-        <LifecycleDemo />
-        <NavigationMenu />
-        <HighScores />
-        <UserProfile user={user} />
-        <Counter />
-        <UserCard name="Іван" age={25} email="ivan@mail.com" />
-        <ProductPrice price={1000} discount={10} />
-        <Button onClick={() => console.log("handle click!")} disabled={false}>
-          Натисни мене
-        </Button>
-        <Button onClick={() => console.log("Зберегти")}>Зберегти</Button>
-        <Button variant="success" size="large">
-          ✅ Підтвердити
-        </Button>
-        <Button variant="danger" size="small" disabled>
-          ❌ Видалити
-        </Button>
-        <Button variant="outline" fullWidth>
-          <span>📤</span>
-          <span>Поділитися</span>
-        </Button>
-        <UserStatus
-          isLoggedIn={false}
-          username="Олена"
-          role="user"
-          isOnline={true}
-        />
-        <UserStatus
-          isLoggedIn={true}
-          username="Олена"
-          role="admin"
-          isOnline={true}
-        />
-        <UserStatus
-          isLoggedIn={true}
-          username="Іван"
-          role="user"
-          isOnline={false}
-        />
-        <h1>Каталог Товарів</h1>
-        {/* Products */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/products" element={<ProductsPage />}></Route>
+          <Route path="/about" element={<AboutPage />}></Route>
+        </Routes>
 
-        <ProductCard
-          name="Ноутбук Lenovo"
-          price={25000}
-          inStock={false}
-          discount={0}
-          rating={4}
-          isFeatured={true}
-          freeShipping={false}
-        />
+        <main className={theme}>
+          <ThemeButton />
 
-        <ProductCard
-          name="Навушники Sony"
-          price={3500}
-          inStock
-          discount={15}
-          rating={5}
-          isFeatured
-          freeShipping
-        />
+          <Navigation />
 
-        <ProductCard
-          name="Навушники JBL"
-          price={2899}
-          inStock
-          discount={0}
-          rating={4}
-          isFeatured={false}
-          freeShipping={false}
-        />
+          <ToggleExample />
+          <FocusControl />
+          <CounterHistory />
+          <TodoList />
+          <LifecycleDemo />
+          <NavigationMenu />
+          <HighScores />
+          <UserProfile user={user} />
+          <Counter />
+          <UserCard name="Іван" age={25} email="ivan@mail.com" />
+          <ProductPrice price={1000} discount={10} />
+          <Button onClick={() => console.log("handle click!")} disabled={false}>
+            Натисни мене
+          </Button>
+          <Button onClick={() => console.log("Зберегти")}>Зберегти</Button>
+          <Button variant="success" size="large">
+            ✅ Підтвердити
+          </Button>
+          <Button variant="danger" size="small" disabled>
+            ❌ Видалити
+          </Button>
+          <Button variant="outline" fullWidth>
+            <span>📤</span>
+            <span>Поділитися</span>
+          </Button>
+          <UserStatus
+            isLoggedIn={false}
+            username="Олена"
+            role="user"
+            isOnline={true}
+          />
+          <UserStatus
+            isLoggedIn={true}
+            username="Олена"
+            role="admin"
+            isOnline={true}
+          />
+          <UserStatus
+            isLoggedIn={true}
+            username="Іван"
+            role="user"
+            isOnline={false}
+          />
+          <h1>Каталог Товарів</h1>
+          {/* Products */}
 
-        <ProductCard
-          name="Навушники Sennheiser "
-          price={3499}
-          inStock
-          discount={0}
-          rating={0}
-          isFeatured
-          freeShipping
-        />
+          <ProductCard
+            name="Ноутбук Lenovo"
+            price={25000}
+            inStock={false}
+            discount={0}
+            rating={4}
+            isFeatured={true}
+            freeShipping={false}
+          />
 
-        <ProductCard
-          name="Навушники Xiomi "
-          price={1999.89}
-          inStock
-          discount={51}
-          rating={0}
-          isFeatured={false}
-          freeShipping
-        />
+          <ProductCard
+            name="Навушники Sony"
+            price={3500}
+            inStock
+            discount={15}
+            rating={5}
+            isFeatured
+            freeShipping
+          />
 
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+          <ProductCard
+            name="Навушники JBL"
+            price={2899}
+            inStock
+            discount={0}
+            rating={4}
+            isFeatured={false}
+            freeShipping={false}
+          />
 
-        <div>
-          <h1>Топ-5 Фільмів Всіх Часів</h1>
-          <ul>
-            {topFilms.map(({ id, title, year, rating }, index) => (
-              <Fragment key={id}>
-                <strong>#{index + 1}</strong>
-                <FilmItem title={title} year={year} rating={rating} />
-              </Fragment>
-            ))}
-          </ul>
-        </div>
+          <ProductCard
+            name="Навушники Sennheiser "
+            price={3499}
+            inStock
+            discount={0}
+            rating={0}
+            isFeatured
+            freeShipping
+          />
 
-        <>
-          <AlertButton />
-          <GreetingButton />
-          <DeleteButton itemId={1234567} />
-          <LoginForm />
-          <ButtonList items={actions} />
-        </>
+          <ProductCard
+            name="Навушники Xiomi "
+            price={1999.89}
+            inStock
+            discount={51}
+            rating={0}
+            isFeatured={false}
+            freeShipping
+          />
 
-        <RestaurantMenu data={menuData} />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
 
-        <footer>© 2024 Hillel IT School</footer>
-      </main>
+          <div>
+            <h1>Топ-5 Фільмів Всіх Часів</h1>
+            <ul>
+              {topFilms.map(({ id, title, year, rating }, index) => (
+                <Fragment key={id}>
+                  <strong>#{index + 1}</strong>
+                  <FilmItem title={title} year={year} rating={rating} />
+                </Fragment>
+              ))}
+            </ul>
+          </div>
+
+          <>
+            <AlertButton />
+            <GreetingButton />
+            <DeleteButton itemId={1234567} />
+            <LoginForm />
+            <ButtonList items={actions} />
+          </>
+
+          <RestaurantMenu data={menuData} />
+
+          <footer>© 2024 Hillel IT School</footer>
+        </main>
+      </BrowserRouter>
     </ThemeContext.Provider>
   );
 }
