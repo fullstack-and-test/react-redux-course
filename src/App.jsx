@@ -19,12 +19,14 @@ import NavigationMenu from "./components/NavigationMenu";
 import RestaurantMenu from "./components/RestaurantMenu";
 import HighScores from "./components/HighScores.jsx";
 import LifecycleDemo from "./components/LifecycleDemo.jsx";
+import ThemeButton from "./components/ThemeButton";
+import TodoList from "./components/TodoList";
+import FocusControl from "./components/FocusControl";
+import CounterHistory from "./components/CounterHistory";
 
 import { topFilms, actions, user, menuData } from "./constants.js";
 
 import { ThemeContext } from "./ThemeContext.js";
-import ThemeButton from "./components/ThemeButton";
-import TodoList from "./components/TodoList";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -37,9 +39,10 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <main className={theme}>
         <ThemeButton />
+        <FocusControl />
+        <CounterHistory />
         <TodoList />
         <LifecycleDemo />
-
         <NavigationMenu />
         <HighScores />
         <UserProfile user={user} />
