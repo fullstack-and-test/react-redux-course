@@ -1,0 +1,30 @@
+.alert {
+	padding: 15px;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	margin-bottom: 10px;
+	font-size: 1em;
+}
+
+.success {
+	background-color: #d4edda;
+	border-color: #28a745;
+	color: #155724;
+}
+
+.danger {
+	background-color: #f8d7da;
+	border-color: #dc3545;
+	color: #721c24;
+}
+
+.warning {
+	background-color: #fff3cd;
+	border-color: #ffc107;
+	color: #856404;
+}
+
+.large {
+	font-size: 1.2em;
+	padding: 20px;
+}

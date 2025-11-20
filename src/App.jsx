@@ -29,6 +29,7 @@ import HomePage from "./components/HomePage";
 import ProductsPage from "./components/ProductsPage";
 import AboutPage from "./components/AboutPage";
 import Navigation from "./components/Navigation";
+import Alert from "./components/Alert.jsx";
 
 import { topFilms, actions, user, menuData } from "./constants.js";
 
@@ -52,6 +53,10 @@ function App() {
 
         <main className={theme}>
           <ThemeButton />
+
+          <Alert variant="success" message="Операцію успішно завершено!" />
+          <Alert variant="danger" message="Помилка доступу до API!" isLarge />
+          <Alert message="Перевірте налаштування." variant="warning" />
 
           <Navigation />
 
