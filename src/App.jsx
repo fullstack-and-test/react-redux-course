@@ -1,33 +1,43 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import DashboardLayout from "./components/DashboardLayout.jsx";
-import OverviewPage from "./components/OverviewPage.jsx";
-import ProfileSettings from "./components/ProfileSettings.jsx";
-import OrderHistory from "./components/OrderHistory.jsx";
-
-import { ThemeContext } from "./ThemeContext.js";
+import HomePage from "./components/HomePage";
+import LoginPage from "./components/LoginPage";
+import GalleryPage from "./components/GalleryPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    const saved = localStorage.getItem("isLoggedIn");
+    return saved === "true";
+  });
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  useEffect(() => {
+    localStorage.setItem("isLoggedIn", isLoggedIn);
+  }, [isLoggedIn]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/dashboard" element={<DashboardLayout />}>
-            <Route index element={<OverviewPage />} />
-            <Route path="profile" element={<ProfileSettings />} />
-            <Route path="orders" element={<OrderHistory />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </ThemeContext.Provider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route index element={<HomePage />} />
+        <Route
+          path="/login"
+          element={
+            <LoginPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          }
+        />
+        <Route
+          path="/gallery"
+          element={
+            <ProtectedRoute isAuth={isLoggedIn}>
+              <GalleryPage />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
