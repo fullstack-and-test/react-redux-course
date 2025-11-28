@@ -1,43 +1,48 @@
-import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { Suspense } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-import "./App.css";
-import HomePage from "./components/HomePage";
-import LoginPage from "./components/LoginPage";
-import GalleryPage from "./components/GalleryPage";
-import ProtectedRoute from "./components/ProtectedRoute";
-
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    const saved = localStorage.getItem("isLoggedIn");
-    return saved === "true";
+const LazyChart = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(import("./components/HeavyChart")), 2000);
   });
+});
 
-  useEffect(() => {
-    localStorage.setItem("isLoggedIn", isLoggedIn);
-  }, [isLoggedIn]);
-
+const LazyTable = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(import("./components/BigTable")), 5000);
+  });
+});
+function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route index element={<HomePage />} />
         <Route
-          path="/login"
+          path="/"
           element={
-            <LoginPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <div>
+              <h1>Welcome!</h1>
+              <Link to="/dashboard">Go to Dashboard page</Link>
+            </div>
           }
         />
         <Route
-          path="/gallery"
+          path="/dashboard"
           element={
-            <ProtectedRoute isAuth={isLoggedIn}>
-              <GalleryPage />
-            </ProtectedRoute>
+            <div>
+              <h1>Головна сторінка дашборду</h1>
+              <Link to="/">Go to Home page</Link>
+              <Suspense fallback={<div>Loading heavy chart ...</div>}>
+                <LazyChart />
+              </Suspense>
+
+              <Suspense fallback={<div>Loading big table ...</div>}>
+                <LazyTable />
+              </Suspense>
+            </div>
           }
         />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
