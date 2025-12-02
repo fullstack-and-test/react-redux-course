@@ -1,21 +1,22 @@
 import { useParams } from "react-router-dom";
-import { products } from "../data/data";
 
-const ProductDetailPage = () => {
-  const { productId } = useParams();
+const ProductDetailsPage = ({ products }) => {
+  const { category, id } = useParams();
 
-  const product = products.find((product) => product.id === productId);
+  const product = products.find((p) => p.category === category && String(p.id) === String(id));
 
   if (!product) {
-    return <h2>Товар не знайдено</h2>;
+    return <h2>Product not found</h2>;
   }
 
   return (
     <div>
-      <h1>{product.name}</h1>
-      <p>Ціна: {product.price}$</p>
+      <h2>{product.name}</h2>
+      <p>Category: {product.category}</p>
+      <p>Price: ${product.price}</p>
+      <p>Rating: {product.rating}</p>
     </div>
   );
 };
 
-export default ProductDetailPage;
+export default ProductDetailsPage;
